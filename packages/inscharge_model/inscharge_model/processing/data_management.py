@@ -1,6 +1,5 @@
 import pandas as pd
 import joblib
-from sklearn.pipeline import Pipeline
 
 from inscharge_model.config import config
 from inscharge_model import __version__ as _version
