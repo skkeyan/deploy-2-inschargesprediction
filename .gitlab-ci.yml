@@ -39,6 +39,6 @@ upload_inscharge_model:
   script:
     - echo "Train, Test and Upload Model"
     - pip install -r packages/inscharge_model/requirements.txt
-    - PYTHONPATH=./packages/inscharge_model python3 packages/inscharge_model/intrate_model/train_pipeline.py
+    - PYTHONPATH=./packages/inscharge_model python3 packages/inscharge_model/inscharge_model/train_pipeline.py
     - chmod +x ./packages/scripts/publish_model.sh
     - ./packages/scripts/publish_model.sh ./packages/inscharge_model/
