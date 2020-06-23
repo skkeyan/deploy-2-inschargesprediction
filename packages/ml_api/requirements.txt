@@ -8,10 +8,10 @@ marshmallow==2.17.0
 
 # local inscharge_model package
 # update with your local path
--e "D:\gitrepos\deploy-2-inschargesprediction\packages\inscharge_model"
+# -e "D:\gitrepos\deploy-2-inschargesprediction\packages\inscharge_model"
 
 # Install from gemfury
-#intrate-model==1.0.0
+inscharge-model==0.1.0
 
 # Deployment
 #gunicorn==19.9.0
