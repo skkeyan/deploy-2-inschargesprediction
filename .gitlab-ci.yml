@@ -20,6 +20,9 @@ test_inscharge_model:
     - pip install -r packages/inscharge_model/requirements.txt
     - PYTHONPATH=./packages/inscharge_model python3 packages/inscharge_model/inscharge_model/train_pipeline.py
     - pytest -v packages/inscharge_model/tests
+  only:
+    refs:
+      - master
 
 test_api:
   stage: test_api
@@ -27,6 +30,9 @@ test_api:
     - echo "Test API"
     - pip install -r packages/ml_api/requirements.txt
     - pytest -v packages/ml_api/tests
+  only:
+    refs:
+      - master
 
 upload_inscharge_model:
   stage: upload_model
@@ -36,22 +42,3 @@ upload_inscharge_model:
     - PYTHONPATH=./packages/inscharge_model python3 packages/inscharge_model/intrate_model/train_pipeline.py
     - chmod +x ./packages/scripts/publish_model.sh
     - ./packages/scripts/publish_model.sh ./packages/inscharge_model/
-  only:
-    refs:
-      - master
-
-heroku_deploy:
-  stage: deploy_to_heroku
-  variables:
-    # I need to control which Git branch I'm on in order to push to Heroku
-    publication_branch_name: "heroku-deploy-branch"
-  script:
-    - echo "Deploy to Heroku"
-    - git config user.email "skkeyan@gmail.com"
-    - git config user.name "Karthikeyan Sankaran"
-    - git checkout -b $publication_branch_name
-    - git commit --allow-empty -m "Publish to Heroku at $(date)"
-    - git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git $publication_branch_name:master
-  only:
-    refs:
-      - master
