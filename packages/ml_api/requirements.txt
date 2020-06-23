@@ -11,7 +11,7 @@ marshmallow==2.17.0
 # -e "D:\gitrepos\deploy-2-inschargesprediction\packages\inscharge_model"
 
 # Install from gemfury
-inscharge-model==0.1.0
+inscharge-model==0.1.1
 
 # Deployment
 gunicorn==19.9.0
