@@ -20,6 +20,9 @@ test_inscharge_model:
     - pip install -r packages/inscharge_model/requirements.txt
     - PYTHONPATH=./packages/inscharge_model python3 packages/inscharge_model/inscharge_model/train_pipeline.py
     - pytest -v packages/inscharge_model/tests
+  only:
+    refs:
+      - master
 
 test_api:
   stage: test_api
@@ -27,6 +30,9 @@ test_api:
     - echo "Test API"
     - pip install -r packages/ml_api/requirements.txt
     - pytest -v packages/ml_api/tests
+  only:
+    refs:
+      - master
 
 upload_inscharge_model:
   stage: upload_model
